@@ -1,7 +1,4 @@
 #alias ls="ls -G"
-alias ll="ls -al"
-alias cls="clear"
-alias ctags="`brew --prefix`/bin/ctags"
 
 SVN_EDITOR=/usr/bin/vim
 export SVN_EDITOR
@@ -91,9 +88,24 @@ PathFull="\w"
 NewLine="\n"
 Jobs="\j"
 Hostname="\H"
-export PS1="$BIRed$Hostname$BIBlack:$BIWhite$PathFull #$Color_Off "
 #eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 #alias perl='/usr/local/Cellar/perl/5.26.2/bin/perl'
 #alias cpan='/usr/local/Cellar/perl/5.26.2/bin/cpan'
 #alias python=/usr/local/bin/python3
+
+#export PERL5LIB=$PERL5LIB`perl5.18 -e 'my $a;foreach(@INC){ $a.="$_:";} print $a;'`
+export PS1="$BIRed$Hostname$BIBlack:$BIWhite$PathFull #$Color_Off "
+export PATH="/usr/local/Cellar/perl/5.26.2/bin:$PATH"
+export PERL5LIB=`perl -e 'my $a=$ENV{PERL5LIB};foreach(@INC){ $a.="$_:";}$a.="."; print $a;'`
+export SVN_EDITOR
+alias dc="cd $HOME/Desktop"
 alias wxglade='python2 ~/wxGlade/wxglade.py &'
+alias perl='/usr/local/Cellar/perl/5.26.2/bin/perl'
+alias perl5.26='/usr/local/Cellar/perl/5.26.2/bin/perl5.26'
+alias perl5.18='/usr/bin/perl'
+alias cpan='sudo /usr/local/Cellar/perl/5.26.2/bin/cpan'
+alias srm='sudo rm -r'
+alias ll="ls -al"
+alias cls="clear"
+alias ctags="`brew --prefix`/bin/ctags"
+alias pp='/usr/local/Cellar/perl/5.26.2/bin/pp'
