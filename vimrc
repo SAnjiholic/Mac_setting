@@ -1,40 +1,82 @@
-set hlsearch " 검색어 하이라이팅
-set nu " 줄번호
-set autoindent " 자동 들여쓰기
-set scrolloff=2
-set wildmode=longest,list
-set ts=4 "tag select
-set sts=4 "st select
-set sw=1 " 스크롤바 너비
-set autowrite " 다른 파일로 넘어갈 때 자동 저장
-set autoread " 작업 중인 파일 외부에서 변경됬을 경우 자동으로 불러옴
-set cindent " C언어 자동 들여쓰기
-set bs=eol,start,indent
-set history=256
-set laststatus=2 " 상태바 표시 항상
-"set paste " 붙여넣기 계단현상 없애기
-set shiftwidth=4 " 자동 들여쓰기 너비 설정
-set showmatch " 일치하는 괄호 하이라이팅
-set smartcase " 검색시 대소문자 구별
-set smarttab
-set smartindent
-set softtabstop=4
-set tabstop=4
-set ruler " 현재 커서 위치 표시
-set incsearch
-set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
-" 마지막으로 수정된 곳에 커서를 위치함
-au BufReadPost *
-\ if line("'\"") > 0 && line("'\"") <= line("$") |
-\ exe "norm g`\"" |
-\ endif
-" 파일 인코딩을 한국어로
-if $LANG[0]=='k' && $LANG[1]=='o'
-set fileencoding=korea
-endif
-" 구문 강조 사용
-if has("syntax")
- syntax on
-endif
-" 컬러 스킴 사용
-colorscheme jellybeans
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+"Plugin 'tpope/vim-fugitivei'
+Plugin 'scrooloose/syntastic'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'neocomplcache'
+Plugin 'taglist-plus'
+
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"NERDTree
+" <F3> NERDTree
+map <F4> :NERDTreeToggle<cr>
+let NERDTreeShowHidden=1
+"NERDTree
+
+"ctrlpvim
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|public$\|log$\|tmp$\|vendor$',
+  \ 'file': '\v\.(exe|so|dll)$'
+\ }
+"ctrlpvim
+
+"neocomplcache"
+let g:neocomplcache_enable_at_startup = 1
+"neocomplcache"
+
+"taglist-plus"
+let Tlist_Use_Right_Window=1
+nmap <F3> :Tlist<cr>
+"taglist-plus"
+"
+nmap <F1> :ls<cr>
+nmap <F2> :bn<cr>
+
+color jellybeans
+set nocompatible     " 오리지날 VI와 호환하지 않음
+set autoindent       " 자동 들여쓰기
+set cindent          " C 프로그래밍용 자동 들여쓰기
+set smartindent      " 스마트한 들여쓰기
+set wrap
+set nowrapscan       " 검색할 때 문서의 끝에서 처음으로 안돌아감
+set nobackup         " 백업 파일을 안만듬
+set noswapfile
+"set visualbell      " 키를 잘못눌렀을 때 화면 프레시
+set ruler            " 화면 우측 하단에 현재 커서의 위치(줄,칸) 표시
+set shiftwidth=4     " 자동 들여쓰기 4칸
+set number           " 행번호 표시, set nu 도 가능
+set fencs=ucs-bom,utf-8,euc-kr.latin1 " 한글 파일은 euc-kr로, 유니코드는 유니코드로
+set fileencoding=utf-8 " 파일저장인코딩
+set tenc=utf-8       " 터미널 인코딩
+"set expandtab       " 탭대신 스페이스
+set hlsearch         " 검색어 강조, set hls 도 가능
+set ignorecase       " 검색시 대소문자 무시, set ic 도 가능
+set tabstop=4        " 탭을 4칸으로
+set lbr
+set incsearch        " 키워드 입력시 점진적 검색
+set cursorline       " 편집 위치에 커서 라인 설정
+set laststatus=2     " 상태바 표시를 항상한다
+syntax on "  구문강조 사용
+filetype indent on   " 파일 종류에 따른 구문강조
+set background=dark  " 하이라이팅 lihgt / dark
+colorscheme jellybeans  "  vi 색상 테마 설정
+set backspace=eol,start,indent "  줄의 끝, 시작, 들여쓰기에서 백스페이스시 이전줄로
+set history=1000     " vi 편집기록 기억갯수 .viminfo에 기록
+highlight Comment term=bold cterm=bold ctermfg=4 " 코멘트 하이라이트
+set mouse=a          " vim에서 마우스 사용
+
+
