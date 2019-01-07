@@ -92,26 +92,13 @@ Hostname="\H"
 
 #export PERL5LIB=$PERL5LIB`perl5.18 -e 'my $a;foreach(@INC){ $a.="$_:";} print $a;'`
 export PS1="$BIRed$Hostname$BIBlack:$BIWhite$PathFull #$Color_Off "
-export PATH="/usr/local/Cellar/perl/5.26.2/bin:$PATH"
-export PERL5LIB=`perl -e 'my $a=$ENV{PERL5LIB};foreach(@INC){ $a.="$_:";}$a.="."; print $a;'`
 export SVN_EDITOR
-export PATH="$PATH:/usr/local/Cellar/qemu/2.12.0/bin"
+export PATH="/usr/local/bin:$PATH"
 
 alias dc="cd $HOME/Desktop"
 alias wxglade='python2 ~/wxGlade/wxglade.py &'
-alias perl='/usr/local/Cellar/perl/5.28.0/bin/perl'
-alias perl5.18='/usr/bin/perl'
-alias cpan='sudo /usr/local/Cellar/perl/5.28.0/bin/cpan'
 alias srm='sudo rm -r'
 alias ll="ls -al"
 alias cls="clear"
 alias ctags="`brew --prefix`/bin/ctags"
-alias pp='/usr/local/Cellar/perl/5.28.0/bin/pp'
 alias c='clear'
-alias jeb='/Users/SAnji/jeb225/jeb225/jeb_macos.sh'
-alias sign='java -jar /Users/SAnji/Desktop/m2o2o2o/sign/signapk_jar'
-#alias python='python3'
-#alias pip='pip3'
-#alias perl='/usr/local/Cellar/perl/5.26.2/bin/perl'
-#alias cpan='/usr/local/Cellar/perl/5.26.2/bin/cpan'
-#alias python=/usr/local/bin/python3
