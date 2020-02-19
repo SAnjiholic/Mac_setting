@@ -91,7 +91,8 @@ Hostname="\H"
 #eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 #export PERL5LIB=$PERL5LIB`perl5.18 -e 'my $a;foreach(@INC){ $a.="$_:";} print $a;'`
-export PS1="$BIRed$Hostname$BIBlack:$BIWhite$PathFull #$Color_Off "
+
+
 export SVN_EDITOR
 export PATH="/usr/local/bin:$PATH"
 
@@ -102,3 +103,9 @@ alias ll="ls -al"
 alias cls="clear"
 alias ctags="`brew --prefix`/bin/ctags"
 alias c='clear'
+export BASH_SILENCE_DEPRECATION_WARNING=1
+source ~/.git-prompt.sh 
+source ~/.git-completion.bash 
+export PS1="$BIRed$Hostname$BIBlack:$BIWhite$PathFull #$Color_Off $BIYellow$(__git_ps1 " (%s)") $Color_Off"
+#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+
