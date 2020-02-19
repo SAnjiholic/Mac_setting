@@ -104,8 +104,12 @@ alias cls="clear"
 alias ctags="`brew --prefix`/bin/ctags"
 alias c='clear'
 export BASH_SILENCE_DEPRECATION_WARNING=1
-source ~/.git-prompt.sh 
-source ~/.git-completion.bash 
-export PS1="$BIRed$Hostname$BIBlack:$BIWhite$PathFull #$Color_Off $BIYellow$(__git_ps1 " (%s)") $Color_Off"
-#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+#source ~/.git-prompt.sh 
+#source ~/.git-completion.bash 
+#export PS1="$BIRed$Hostname$BIBlack:$BIWhite$PathFull #$Color_Off $BIYellow$(__git_ps1 " (%s)") $Color_Off"
 
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1 /'
+}
+
+export PS1="$BIRed$Hostname$BIBlack:$BIWhite$PathFull #$Color_Off $BIYellow\$(parse_git_branch)$Color_Off $IN"
